@@ -31,6 +31,10 @@ export const GithubUserFinder = () => {
     setUsername(e.target.value);
   };
 
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter") searchUser();
+  };
+
   return (
     <div className="card">
       <h1>GitHub User Finder</h1>
@@ -42,6 +46,7 @@ export const GithubUserFinder = () => {
           placeholder="e.g. torvalds, gaearon, octocat"
           value={username}
           onChange={handleChange}
+          onKeyDown={handleKeyDown}
         />
         <button onClick={searchUser}>Search</button>
       </div>
@@ -69,7 +74,7 @@ export const GithubUserFinder = () => {
               </div>
               <div id="div3">
                 <p>{userData.location}</p>
-                <p>@{userData.company}</p>
+                <p>{userData.company}</p>
                 <p>
                   <a href={userData.blog}>Blog</a>
                 </p>
